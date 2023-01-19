@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
             Scanner scanner = new Scanner(System.in);
+
             System.out.println("수를 입력하시오.: ");
             double firstNum = scanner.nextDouble();
 
@@ -19,9 +20,6 @@ public class Main {
 
             System.out.println("수를 입력하시오.: ");
             double secondNum = scanner.nextDouble();
-
-            System.out.println("+, -, *, /, = 중 선택하시오.: ");
-            String operator1 = scanner.next();
 
             double res = 0;
             switch (operator) {
@@ -43,5 +41,6 @@ public class Main {
                 default:
                     System.out.println("잘 못 입력하셨습니다.");
             }
+            System.out.println("result = " + res);
     }
 }

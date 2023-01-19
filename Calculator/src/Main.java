@@ -42,6 +42,5 @@ public class Main {
                     System.out.println("잘 못 입력하셨습니다.");
             }
             System.out.println("result = " + res);
-
     }
 }
