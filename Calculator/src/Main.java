@@ -10,13 +10,13 @@ public class Main {
     public static void main(String[] args) {
 
             Scanner scanner = new Scanner(System.in);
+
             System.out.println("수를 입력하시오.: ");
             double firstNum = scanner.nextDouble();
 
             System.out.println("+, -, *, /, = 중 선택하시오.: ");
             //String operator = scanner.nextLine();
             String operator = scanner.next();
-
 
             System.out.println("수를 입력하시오.: ");
             double secondNum = scanner.nextDouble();
@@ -35,11 +35,9 @@ public class Main {
                 case "/":
                     res = firstNum / secondNum;
                     break;
-                /**
                 case "=":
                     System.out.println("result = " + res);
                     break;
-                 */
                 default:
                     System.out.println("잘 못 입력하셨습니다.");
             }
