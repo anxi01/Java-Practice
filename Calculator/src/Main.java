@@ -9,38 +9,41 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+            Variables variables = new Variables();
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("수를 입력하시오.: ");
-            double firstNum = scanner.nextDouble();
+            do{System.out.println("수를 입력하시오.: ");
+            //double firstNum = scanner.nextDouble();
+            variables.firstNum = scanner.nextDouble();
 
             System.out.println("+, -, *, /, = 중 선택하시오.: ");
             //String operator = scanner.nextLine();
-            String operator = scanner.next();
+            //String operator = scanner.next();
+            variables.operator = scanner.next();
 
             System.out.println("수를 입력하시오.: ");
-            double secondNum = scanner.nextDouble();
+            variables.secondNum = scanner.nextDouble();
 
-            double res = 0;
-            switch (operator) {
+            variables.res = 0;
+            switch (variables.operator) {
                 case "+":
-                    res = firstNum + secondNum;
+                    variables.res = variables.firstNum + variables.secondNum;
                     break;
                 case "-":
-                    res = firstNum - secondNum;
+                    variables.res = variables.firstNum - variables.secondNum;
                     break;
                 case "*":
-                    res = firstNum * secondNum;
+                    variables.res = variables.firstNum * variables.secondNum;
                     break;
                 case "/":
-                    res = firstNum / secondNum;
+                    variables.res = variables.firstNum / variables.secondNum;
                     break;
                 case "=":
-                    System.out.println("result = " + res);
+                    System.out.println("result = " + variables.res);
                     break;
                 default:
                     System.out.println("잘 못 입력하셨습니다.");
-            }
-            System.out.println("result = " + res);
+            }}while(variables.operator != "=");
+
     }
 }
