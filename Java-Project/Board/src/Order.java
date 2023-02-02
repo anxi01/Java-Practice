@@ -1,14 +1,15 @@
 public class Order {
 
-    private int price;
+    private String price;
     private String product;
 
-    public Order(String product, int price) {
+    public Order(String product, String price) {
         this.product = product;
         this.price = price;
     }
+    public Order(){}
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 

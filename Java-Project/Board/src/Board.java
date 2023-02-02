@@ -12,7 +12,7 @@ public class Board {
         boolean loop = true;
 
         while(loop) {
-            System.out.println("1. 상품 조회 \t 2. 상품 입력 \t 3. 나가기");
+            System.out.println("1. 상품 조회 \t 2. 상품 입력 \t 3. 상품 삭제 \t 4. 나가기");
             int input = scanner.nextInt();
 
             // 1. 게시판 조회
@@ -29,12 +29,29 @@ public class Board {
                 System.out.println("상품을 추가해주세요.");
                 String product = scanner.next();
                 System.out.println("가격을 추가해주세요.");
-                int price = scanner.nextInt();
+                String price = scanner.next();
 
                 orders.add(new Order(product, price));
             }
-            // 3. 나가기
+            // 3. 게시판 삭제
             if (input == 3){
+//                System.out.println("제거할 상품의 이름을 입력해주세요.");
+//                String productName = scanner.next();
+//                System.out.println("가격을 추가해주세요.");
+//                String price = scanner.next();
+//
+//                orders.remove(new Order(productName, price));
+
+//                System.out.println("제거할 상품의 이름 혹은 가격을 입력해주세요.");
+//                String productInfo = scanner.next();
+//
+//                if(productInfo.equals(orders)){
+//                    orders.remove(productInfo);
+//                }
+
+            }
+            // 4. 나가기
+            if (input == 4){
                 loop = false;
             }
         }
