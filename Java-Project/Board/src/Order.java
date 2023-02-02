@@ -17,4 +17,8 @@ public class Order {
         return product;
     }
 
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
 }
