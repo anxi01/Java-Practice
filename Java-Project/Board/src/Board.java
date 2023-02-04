@@ -34,14 +34,24 @@ public class Board {
                 orders.add(new Order(product, price));
             }
             // 3. 게시판 삭제
-            if (input == 3){
-                System.out.println("제거할 상품의 이름을 입력해주세요.");
-                String productName = scanner.next();
+            if (input == 3) {
+//                System.out.println("제거할 상품의 이름을 입력해주세요.");
+//                String productName = scanner.next();
+//                for (int i = 0; i < orders.size(); i++) {
+//                    if (orders.get(i).getProduct().equals(productName)) {
+//                        orders.remove(i);
+//                    }
+//                }
+
+                System.out.println("제거할 상품의 가격을 입력해주세요");
+                String productPrice = scanner.next();
                 for (int i = 0; i < orders.size(); i++) {
-                    if (orders.get(i).getProduct().equals(productName)) {
+                    if(orders.get(i).getPrice().equals(productPrice)){
                         orders.remove(i);
                     }
                 }
+            }
+//                ----------------------------------------------------------------------------------
 //                System.out.println("가격을 추가해주세요.");
 //                String price = scanner.next();
 
@@ -53,8 +63,6 @@ public class Board {
 //                if(productInfo.equals(orders)){
 //                    orders.remove(productInfo);
 //                }
-
-            }
             // 4. 나가기
             if (input == 4){
                 loop = false;
