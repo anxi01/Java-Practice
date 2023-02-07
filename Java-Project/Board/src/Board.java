@@ -5,7 +5,10 @@ import java.util.*;
  *   => 이전 아이디와 현재 입력된 아이디가 다를 경우, 리스트를 초기화 하는 방법(orders.clear())
  *   But> 이전 아이디와 현재 입력된 아이디를 비교할 수 있는 방법을 찾지 못함.
  *
+ *   Sol> orders 리스트에 아이디를 입력해서 [아이디, 상품명, 가격]에서 입력한 아이디와 리스트의 아이디가 같으면 입력, 삭제 등 기능을 구현할 수 있게 함
+ *
  *   2. SignUp Class를 사용하지 않음.
+ *   => X
  */
 
 
@@ -31,7 +34,11 @@ public class Board {
                 System.out.println("비밀번호를 입력해주세요.");
                 String password = scanner.next();
 
-                signUpMap.put(id, password);
+                if(!signUpMap.containsKey(id)){
+                    signUpMap.put(id, password);
+                }else {
+                    System.out.println("아이디가 중복되었습니다.");
+                }
             }
 
             /** 로그인 */
@@ -56,19 +63,25 @@ public class Board {
                     if (input2 == 1) {
                         System.out.println("상품------가격");
                         System.out.println("=============");
-                        //System.out.print(orders.get(0).getProduct() + "-----" + orders.get(0).getPrice());
                         for (Order order : orders) {
-                            System.out.println(order.getProduct() + "------" + order.getPrice());
+                            if(order.getCustomerId().equals(id)){
+                                System.out.println(order.getProduct() + "------" + order.getPrice());
+                            }
                         }
                     }
                     /** 2. 게시판 입력 */
                     if (input2 == 2) {
+                        System.out.println("아이디를 입력해주세요.");
+                        String customerId = scanner.next();
                         System.out.println("상품을 추가해주세요.");
                         String product = scanner.next();
                         System.out.println("가격을 추가해주세요.");
                         String price = scanner.next();
-
-                        orders.add(new Order(product, price));
+                        if(customerId.equals(id)){
+                            orders.add(new Order(customerId, product, price));
+                        }else{
+                            System.out.println("아이디가 틀립니다.");
+                        }
                     }
                     /** 3. 게시판 삭제 */
                     if (input2 == 3) {
