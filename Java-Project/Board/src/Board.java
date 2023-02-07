@@ -9,6 +9,9 @@ import java.util.*;
  *
  *   2. SignUp Class를 사용하지 않음.
  *   => X
+ *
+ *   3. HashMap의 key 중복 안되는 기능을 사용하지 않음.
+ *   => HashMap의 아이디(key)가 입력된 아이디와 다를경우를 조건해서 작성함.. 다른 방법이 있을지도..
  */
 
 
