@@ -22,16 +22,29 @@ public class Board {
     static Scanner scanner = new Scanner(System.in);
     private static Map<String, String> signUpMap = new HashMap<>();
 
+
+
     public static void main(String[] args) {
 
         boolean loop1 = true;
+
+        // 주의사항 c가 없어지면 d가 인덱스를 바꿔서 에러가 난다.
+        List<String> tests = List.of("a", "b", "c", "d");
+        for (int i = 0; i < tests.size(); i++) {
+            System.out.println(tests.get(i));
+            if (tests.get(i).equals("c")) {
+                tests.remove(i);
+            }
+        }
 
         while(loop1) {
 
             System.out.println("1. 회원가입 \t 2. 로그인 \t 3. 로그아웃");
             int input1 = scanner.nextInt();
 
-            if (input1 == 1){
+            final Test inputType = Test.from(input1);
+
+            if (inputType == Test.SIGNUP_TYPE){
                 System.out.println("아이디를 입력해주세요.");
                 String id = scanner.next();
                 System.out.println("비밀번호를 입력해주세요.");
@@ -44,8 +57,7 @@ public class Board {
                 }
             }
 
-            /** 로그인 */
-            if (input1 == 2) {
+            if (inputType == Test.LOGIN_TYPE) {
                 System.out.println("아이디를 입력해주세요.");
                 String id = scanner.next();
                 System.out.println("비밀번호를 입력해주세요.");
@@ -138,7 +150,7 @@ public class Board {
                 }
             }
                 /** 3. 로그아웃 */
-                if(input1 == 3){
+                if(inputType == Test.LOGOUT_TYPE){
                     loop1 = false;
                 }
         }

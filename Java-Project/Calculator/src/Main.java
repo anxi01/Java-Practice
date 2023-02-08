@@ -1,4 +1,3 @@
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 /**
@@ -6,12 +5,17 @@ import java.util.Scanner;
  * 1. 반복해서 사용가능해야함(반복문 사용해서 "=" 입력 받으면 break 만들기)
  * 2. 사칙연산 순위 정해줘야 함.
  * 3. 반복해서 사칙연산이 가능해야하고 멈출 때 "="을 사용해야 함.
+ *
+ * 밑에와 같이 계산 식을 넣어서 계산 값을 볼 수 있게 한다.
+ * 2 * 2 / 2 * 10 + 2
+ * 클래스를 Main에서만 만들지 말고 여러 클래스를 나눠가면서 객체지향적으로 만들어 본다.
+ *
+ *
  */
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in); //미리 선언
     public static void main(String[] args) {
-
             boolean isChecked = true;
 
             while(isChecked){
