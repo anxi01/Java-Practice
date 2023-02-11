@@ -7,7 +7,6 @@ public class Variables {
         this.number = number;
         this.operation = operation;
     }
-
     public Variables(){}
 
     public int getNumber() {
