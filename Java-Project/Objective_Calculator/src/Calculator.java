@@ -12,49 +12,51 @@ public class Calculator {
         while (isChecked) {
 
             String input = scanner.nextLine();
-            String[] mobNum = input.split(" ");
-            String[] operations = new String[10];
-            BasicOperations inputType = null;
+            String[] inputArray = input.split(" ");
 
-            for (int i = 0; i < mobNum.length; i++) {
+            String[] total = new String[10];
+
+            for (int i = 0; i < inputArray.length; i++) {
                 if (i % 2 != 0) {
                     /** 부호를 배열에 넣음*/
-                    String operation = mobNum[i];
-                    operations[i] = operation;
+                    String operation = inputArray[i];
+                    total[i] = operation;
                 }else {
                     /** 수를 배열에 넣음*/
-                    String number = mobNum[i];
-                    operations[i] = number;
+                    String number = inputArray[i];
+                    total[i] = number;
                 }
             }
 
-            int[] strToInt = new int[10];
-            int abc = 0;
-            String[] operation = new String[10];
-            for(int i = 0; i < operations.length && operations[i]!= null; i++){
+            int strToInt = 0;
+            int[] strToIntArray = new int[10];
+            String[] operationsArray = new String[10];
+            for(int i = 0; i < total.length && total[i]!= null; i++){
                 if(i % 2 == 0){
-                    abc = Integer.parseInt(operations[i]);
+                    strToInt = Integer.parseInt(total[i]);
                 }else{
-                    operation[i] = operations[i];
+                    operationsArray[i] = total[i];
                 }
-                strToInt[i] = abc;
+                strToIntArray[i] = strToInt;
             }
 
-            int[] strToInt2 = new int[10];
-            for(int i = 0; i < strToInt.length && strToInt[i]!= 0; i = i + 2){
-                strToInt2[i/2] = strToInt[i];
+            int[] numbersArray = new int[10];
+            for(int i = 0; i < strToIntArray.length && strToIntArray[i]!= 0; i = i + 2){
+                numbersArray[i/2] = strToIntArray[i];
             }
-            double total = strToInt2[0];;
-            for(int i = 1; i < strToInt2.length && strToInt2[i]!= 0; i++){
-                inputType = BasicOperations.from(operation[2*i-1]);
+
+            double result = numbersArray[0];
+            BasicOperations inputType = null;
+            for(int i = 1; i < numbersArray.length && numbersArray[i]!= 0; i++){
+                inputType = BasicOperations.from(operationsArray[2*i-1]);
                 switch (inputType){
-                    case ADDITION_TYPE -> total += strToInt2[i];
-                    case SUBTRACTION_TYPE -> total -= strToInt2[i];
-                    case MULTIPLICATION_TYPE -> total *= strToInt2[i];
-                    case DIVISION_TYPE -> total /= strToInt2[i];
+                    case ADDITION_TYPE -> result += numbersArray[i];
+                    case SUBTRACTION_TYPE -> result -= numbersArray[i];
+                    case MULTIPLICATION_TYPE -> result *= numbersArray[i];
+                    case DIVISION_TYPE -> result /= numbersArray[i];
                 }
             }
-            System.out.println(total);
+            System.out.println(result);
             isChecked = false;
         }
     }
