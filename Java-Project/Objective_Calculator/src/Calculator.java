@@ -1,52 +1,62 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Calculator {
 
     static Scanner scanner = new Scanner(System.in);
-    static List<Variables> constants = new ArrayList<>();
 
-
-    public void start(){
+    public void start() {
 
         boolean isChecked = true;
 
-        while(isChecked){
-            System.out.println("숫자를 입력하세요.");
-            Variables number1 = new Variables();
-            number1.number = scanner.nextInt();
+        while (isChecked) {
 
-            System.out.println("+, -, *, /, = 중 입력하세요.");
-            Variables operation1 = new Variables();
-            operation1.operation = scanner.next();
+            String input = scanner.nextLine();
+            String[] mobNum = input.split(" ");
+            String[] operations = new String[10];
+            BasicOperations inputType = null;
 
-            final BasicOperations inputType = BasicOperations.from(operation1.operation);
-
-            constants.add(new Variables(number1.number, operation1.operation));
-
-            // total = 0 ..
-            int total = 0;
-            for(int i = 0; i < constants.size(); i++){
-                if(inputType == BasicOperations.ADDITION_TYPE){
-                    total += constants.get(i).getNumber();
-                }
-                if(inputType == BasicOperations.SUBTRACTION_TYPE){
-                    total -= constants.get(i).getNumber();
-                }
-                if(inputType == BasicOperations.MULTIPLICATION_TYPE){
-                    total *= constants.get(i).getNumber();
-                }
-                if(inputType == BasicOperations.DIVISION_TYPE){
-                    total /= constants.get(i).getNumber();
-                }
-                if(inputType == BasicOperations.EQUALITY_TYPE) {
-                    isChecked = false;
-                    //System.out.print(constants.get(i).getNumber() + constants.get(i).getOperation());
-                    System.out.println(constants);
+            for (int i = 0; i < mobNum.length; i++) {
+                if (i % 2 != 0) {
+                    /** 부호를 배열에 넣음*/
+                    String operation = mobNum[i];
+                    operations[i] = operation;
+                }else {
+                    /** 수를 배열에 넣음*/
+                    String number = mobNum[i];
+                    operations[i] = number;
                 }
             }
-            //System.out.println(total);
+
+            int[] strToInt = new int[10];
+            int abc = 0;
+            String[] operation = new String[10];
+            for(int i = 0; i < operations.length && operations[i]!= null; i++){
+                if(i % 2 == 0){
+                    abc = Integer.parseInt(operations[i]);
+                }else{
+                    operation[i] = operations[i];
+                }
+                strToInt[i] = abc;
+            }
+
+            int[] strToInt2 = new int[10];
+            for(int i = 0; i < strToInt.length && strToInt[i]!= 0; i = i + 2){
+                strToInt2[i/2] = strToInt[i];
+            }
+            double total = strToInt2[0];;
+            for(int i = 1; i < strToInt2.length && strToInt2[i]!= 0; i++){
+                inputType = BasicOperations.from(operation[2*i-1]);
+                switch (inputType){
+                    case ADDITION_TYPE -> total += strToInt2[i];
+                    case SUBTRACTION_TYPE -> total -= strToInt2[i];
+                    case MULTIPLICATION_TYPE -> total *= strToInt2[i];
+                    case DIVISION_TYPE -> total /= strToInt2[i];
+                }
+            }
+            System.out.println(total);
+            isChecked = false;
         }
     }
 }
+
