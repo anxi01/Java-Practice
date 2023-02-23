@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,11 +22,11 @@ public class Calculator {
                     /** 부호를 배열에 넣음*/
                     String operation = inputArray[i];
                     total[i] = operation;
-                }else {
-                    /** 수를 배열에 넣음*/
-                    String number = inputArray[i];
-                    total[i] = number;
+                    continue;
                 }
+                /** 수를 배열에 넣음*/
+                String number = inputArray[i];
+                total[i] = number;
             }
 
             int strToInt = 0;
