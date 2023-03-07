@@ -11,7 +11,7 @@ public class Calculator {
 
         while (isChecked) {
 
-            String input = scanner.nextLine();
+            final String input = scanner.nextLine();
             String[] inputArray = input.split(" ");
 
             String[] total = new String[10];
@@ -23,9 +23,11 @@ public class Calculator {
                     total[i] = operation;
                 }else {
                     /** 수를 배열에 넣음*/
-                    String number = inputArray[i];
-                    total[i] = number;
+                    continue;
                 }
+                /** 수를 배열에 넣음 */
+                String number = inputArray[i];
+                total[i] = number;
             }
 
             int strToInt = 0;
