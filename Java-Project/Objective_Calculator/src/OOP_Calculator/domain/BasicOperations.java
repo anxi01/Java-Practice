@@ -1,3 +1,5 @@
+package OOP_Calculator.domain;
+
 public enum BasicOperations {
     ADDITION_TYPE("+"),
     SUBTRACTION_TYPE("-"),
